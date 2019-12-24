@@ -1,0 +1,393 @@
+.cardDirecciones{
+    border: none!important;   
+}
+.btn-outline-warning,.btn-outline-info,.btn-outline-success {
+    color:black!important;
+    margin-bottom: 6px;
+}
+.pub_image .comments{
+    padding: 20px;
+}
+.detailcomment{
+    padding: 20px;
+}
+.card-index:hover{
+    transform: scale(1.05);
+    transition: all .4s ease;
+
+}
+h2{
+    font-weight: 300!important;
+}
+
+
+h4{
+    font-weight: 300;  
+}
+.btn-outline-danger {
+    color: black;
+
+}
+.Pago{
+
+}
+.modal-backdrop {
+
+    width: 100%;
+    height: 100%;
+
+}
+.dropdown-menu {
+    background: #f7f7f7;
+
+}
+.dropdown-toggle::after {
+    display: none;
+}
+.carritoSpan{
+    color:rgb(220, 152, 51);
+}
+.carrito{
+
+    text-align: right;
+    font-size: 20px!important;
+}
+.categoria-img{
+    background: rgba(247, 247, 247, 1);
+    padding: 0px!important;
+}
+
+body{
+    background: rgba(247, 247, 247, 1);
+    font-size: 14px;
+}
+.card-body{
+    background: rgba(247, 247, 247, 1);
+    border:none!important;
+    padding: 0;
+}
+.precioCard{
+    letter-spacing: 1px;
+    color: #ff2663 !important;
+}
+
+.card{   
+
+}
+.card img{   
+    height: auto;
+    width: auto;
+}
+
+a{
+    text-decoration: none!important;
+    color: #000;
+    cursor: pointer;
+}
+a:hover{
+    color: #000;
+}
+
+header{
+    background: rgba(247, 247, 247, 1);
+}
+.logo {
+    width: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.updown-unidades{
+    font-size: 50px;
+    margin-left: 10px;
+
+}
+
+.container-avatar img, .pub_image .container-avatar img{
+    width: 100%;
+    height: 100%; 
+}
+.container-avatar, .pub_image .container-avatar{ 
+    width: 79px;
+    height: 79px;
+    border-radius: 900px;
+    overflow: hidden;
+    margin-left: 20px;
+}
+.nav-item{
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 20px!important;
+}
+.navHover:hover{
+    color: rgb(220, 152, 51);
+    transform: scale(1);
+    background: rgba(247, 247, 247, 1);
+    transition: all .3s ease;
+
+}
+
+.hoverNav{
+    transform: scale(1);
+    transition: all .3s ease;
+
+}
+.navbar .container-avatar, .pub_image .container-avatar{ 
+    width: 35px;
+    height: 35px;
+    border-radius: 900px;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+
+.video video {
+    width: 100%;
+    height: auto;
+}
+@media only screen and (max-width:991px) {
+    .col-lg-4 {
+        max-width: 50%!important;
+    }
+    .border{
+        border: none!important;
+    }
+
+
+
+    .navbar-toggler {
+        width: 100%;
+    }
+
+    .col-lg-4 {
+        max-width: 25%!important;
+    }
+
+}
+@media only screen and (max-width:400px) 
+{
+    .col-3{
+
+        max-width: 50%!important;
+    }
+}
+@media only screen and (max-width:600px) {
+    .display-4 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+    .col-3{
+        flex: 0 0 21%;
+        max-width: 34%;
+    }
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 100%!important;
+        height: 1.5em;
+    }
+    h1{
+        font-size: 25px;
+    }
+    .logo{ 
+        width:60%;
+        margin-left: 30px;
+    }
+
+    .hoverNav,.navHover:hover{
+        transform: scale(1);
+    }
+
+}
+
+
+.container-fluid {
+    height: 90%;
+    width: 100%;
+}
+
+.carousel-inner img {
+    height: 300px;
+}
+.bienvenido{
+    height: 300px;
+    background: url("../img/planos.jpg");
+
+    background-attachment: fixed;
+}
+
+.contenedor {
+
+    margin-bottom: 20px;
+    background: #0275d8;
+    color: #fff;
+    height: 100px;
+}
+
+.contenedor div {
+    background: rgba(255, 255, 255, .2);
+    padding: 15px;
+    border: 1px solid #000;
+
+
+}
+
+
+.container-fluid {
+    height: 90%;
+    width: 100%;
+}
+
+.carousel-inner img {
+    height: 300px;
+}
+
+
+.inicionSesion{
+    margin-left: 55px;
+}
+input{
+    margin: 6px;
+}
+.menuFoot{
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+}
+.page-item.active .page-link {
+
+    border-color: rgb(220, 152, 51)!important;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: rgb(220, 152, 51)!important;
+    border-color: #007bff;
+}
+.Zebra_Pagination a, .Zebra_Pagination span {
+    color: black;
+}
+/*****MEDIA QUERYS***/
+@media only screen and (max-width:659px) {
+    .carrito {
+        font-size:15px!important;
+        margin-top: 20px;
+    }
+    .carritoh1{
+        font-size: 2.5rem!important;
+
+    }
+    .btnConfirmarPedido{
+        border-radius: 2.25rem;
+        margin: 20px;
+    }
+    .img-fluid{
+
+    }
+
+    .container-avatar, .pub_image .container-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 875px;
+        overflow: hidden;
+        margin-left: 20px;
+    }
+    .btn{
+        padding: 0.375rem 0.75rem;
+    }
+    .nav-link {
+        display: block;
+        padding: 3px 1rem;
+    }
+    .barraPrincipal{
+        letter-spacing: 5px!important;
+
+    }
+
+    .nav-item {
+        letter-spacing: 0px!important;
+        font-size: 15px!important;
+        margin-bottom: 5px;
+
+    }
+
+}
+
+.dropdown-item:active{
+    color: black;
+    background:  #ffc107!important;
+
+
+}
+.dropdown-item:hover{
+    color: black;
+    background: hsla(45, 100%, 51%, 0.76);
+    transition: all .4s ease;
+
+
+}
+.border{
+    border-radius: 5px;
+
+}
+.principalLetrasNav{
+    letter-spacing: 2px;
+    color: rgba(87, 26, 33, 0.9)!important;
+}
+
+
+
+
+.navLogin{
+
+    font-size: 15px;
+
+
+}
+.principalLetrasNav:hover{
+    transform: scale(1.03);
+
+}
+@media only screen and (min-width:991px) {
+    .principalLetrasNav:hover{
+        transition: all .4s ease;
+        border-radius: 3px;
+
+    }
+    .dropdown-menu {
+        background: #f7f7f7;
+
+        border: 1px solid #dee2e6!important;
+    }
+
+
+}
+.divLogin{
+    border: none!important;
+
+}
+.cardConfiguracion{
+    border: none!important;
+}
+.contenedorDirecciones{
+    border: 1px solid #dee2e6 !important;
+    border-radius: 5px;
+}
+.inputDirecciones{
+    margin-top: 10px;
+    margin-left:  0;
+}
+#messageEliminado{
+    display: none;
+}
+#message
+{
+
+    display: none;
+
+}
+
+.contenedorDireccionesPedido{
+    background: white!important;
+}

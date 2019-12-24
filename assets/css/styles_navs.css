@@ -1,0 +1,7 @@
+.fm-nav a{
+    color: white;
+    padding: 15px;
+}
+.fm-nav :hover{
+   background: rgba(255, 255, 255, 0.1);
+}
