@@ -25,7 +25,7 @@ $(document).ready(function () {
 
 
 
-    $(".submitComent").on("click", function (e) {
+    $(document).on("click",".submitComent", function (e) {
         /*obtiene el atributo name pues es el nombre de identificacion del comentario*/
         buttonpressed = $(this).attr('name');
         item = $("#" + buttonpressed);

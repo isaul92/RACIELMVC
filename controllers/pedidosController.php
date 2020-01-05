@@ -46,6 +46,7 @@ class pedidosController {
             header("Location:" . base_url);
         }
         header("Location:" . base_url . "pedidos/confirmado");
+          echo"<script language='javascript'>window.location='".base_url . "pedidos/confirmado"."'</script>;";
     }
 
     public function confirmado() {
@@ -59,6 +60,7 @@ class pedidosController {
             $productos = $pedido_productos->getProductosByPedido($pedido->id);
         } else {
             header("Location:" . base_url);
+              echo"<script language='javascript'>window.location='".base_url . "</script>;";
         }
 
         require_once 'views/pedidosViews/confirmacion.php';
@@ -86,6 +88,7 @@ class pedidosController {
             $productos = $pedido_productos->getProductosByPedido($id);
         } else {
             header("Location:" . base_url . "pedidos/mispedidos");
+              echo"<script language='javascript'>window.location='".base_url . "pedidos/mispedidos"."'</script>;";
         }
 
         require_once 'views/pedidosViews/pedidoDetalle.php';
@@ -114,8 +117,9 @@ class pedidosController {
             $pedido->setEstado($estado);
             $pedido->cambiarEstadoPedido();
             header("Location:" . base_url . "pedidos/gestionPedidos");
+              echo"<script language='javascript'>window.location='".base_url . "pedidos/gestionPedidos"."'</script>;";
         } else {
-            header("Location:" . base_url);
+            echo"<script language='javascript'>window.location='".base_url."'</script>;";
         }
     }
 

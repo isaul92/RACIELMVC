@@ -17,7 +17,7 @@ $(document).on("submit", "#buscarProductos", function (e) {
     }).done(function (data) {
 
 
-        $("div").remove("#tablaBuscarProd");
+        $("div").remove("#grupoDeCards");
         $("#buscadorProductos").append(data);
    
 

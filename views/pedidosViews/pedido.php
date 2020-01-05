@@ -85,15 +85,4 @@ $carr = json_encode($_SESSION["carrito"], JSON_FORCE_OBJECT);
                                         <input type="hidden" id="direccion" name="direccion" value="">
                                        <input type="submit" id="confirmarDireccion" class="btn btn-light my-3" disabled  value="Hacer Pedido">
                                     </form> 
-        <h1>Pedido hacer</h1>
-
-        <h3>Domicilio del envio</h3>
-        <form action="<?= base_url ?>pedidos/add" method="POST">
-            <label>Provincia</label>
-            <input type="text" required="required" name="provincia">
-            <label>Localidad</label>
-            <input type="text" required="required" name="localidad">
-            <label>Direccion</label>
-            <input type="text" required="required" name="direccion">
-
-            <input type="submit" value="Hacer pedido">
+       

@@ -1,16 +1,16 @@
 <div class=" row  d-flex p-lg-4 mt-lg-4 justify-content-around">
 
-    <div class=" col-lg-6 col-sm-12 p-4 d-flex justify-content-around">
+    <div class=" col-lg-6 col-sm-12 d-flex justify-content-around">
         <div class=" col-lg-9 col-sm-12 col-md-10 ">
             <h2 class="mb-4 text-center">Novedades</h2>
             <?php while ($noticia = $noticias->fetch_object()): ?> 
                 <div class="card pub_image">
                     <div class="card-body">
                         <div class="image-container mb-2 mt-0">
-                            <img src="<?= base_url ?>uploads/images/<?= $noticia->nombreImagen ?>" alt="" class="card-image-top img-fluid ">
+                            <img src="<?= base_url ?>uploads/images/<?= $noticia->nombreImagen ?>" alt="" class=" sombra card-image-top img-fluid ">
                         </div>
 
-                        <div class="description">
+                        <div class="description mt-4">
                             <span class="date m-2 p-2"><?= FormatTime::imprimirTiempo($noticia->created_at) ?>
                             </span>
                             <p class="p-3 text-justify "><?= $noticia->texto ?></p>                        
@@ -21,7 +21,7 @@
                         <div class = "comments  ">
                             <?php $id = $noticia->id ?>
                             <button   onclick="javascript:oculta('item<?= $noticia->id ?>')"
-                                      class = "btn btn-sm btn-outline-warning mb-2 btn-comments" >Comentarios </button>
+                                      class = "btn btn-sm btn-outline-warning mb-2 btn-comments" >Comentarios(<?= utilidades::countCommentsNews($noticia->id ) ?>) </button>
                             <div class="invisible" id="item<?= $id ?>" style="display: none;">
                                 <?php if (isset($_SESSION["identity"]->id)): ?>
 
@@ -69,10 +69,11 @@
                                                 <?php endif; ?>  </div>
 
                                         <div class="col-12 "> 
-                                            <p><?= $comment->content; ?></p>  
+                                            <p style="background:white!important;"><?= $comment->content; ?></p>  
                                         </div>   
 
                                     </div> 
+                                <hr>
 
                                 <?php endwhile; ?>
                                 <div class='cleafix'></div>
@@ -89,7 +90,7 @@
     </div>
 
 
-    <div class=" col-lg-6 col-sm-12 p-4  ">
+    <div class=" col-lg-6 col-sm-12  ">
         <h2 class=" mb-4 text-center">Nuestros trabajos</h2>
         <div class="card-columns">
             <?php while ($pro = $productos->fetch_object()): ?>
@@ -97,7 +98,7 @@
 
                 <div class="card card-index m-2 border-1  ">
                     <?php if ($pro->imagen != null): ?>
-                        <a  class="" href="<?= base_url ?>producto/ver&id=<?= $pro->id ?>"> <img  src="<?= base_url ?>uploads/images/<?= $pro->imagen ?>" alt="" class="card-image-top img-fluid">
+                        <a  class="" href="<?= base_url ?>producto/ver&id=<?= $pro->id ?>"> <img  src="<?= base_url ?>uploads/images/<?= $pro->imagen ?>" alt="" class="sombra card-image-top img-fluid">
                         <?php else: ?>
 
                         <?php endif; ?>
@@ -108,7 +109,7 @@
                     <?php while ($obra = $obras->fetch_object()): ?>
                         <div class="card card-index m-2 border-1  ">
                             <?php if ($obra->imagen != null): ?>
-                                <a  class="" href="<?= base_url ?>obrasArquitecto/ver&id=<?= $obra->id ?>"><img class="card-image-top img-fluid" src="<?= base_url ?>uploads/images/<?= $obra->imagen ?>" alt="" class="avatar"/></a>
+                                <a  class="" href="<?= base_url ?>obrasArquitecto/ver&id=<?= $obra->id ?>"><img class="sombra card-image-top img-fluid" src="<?= base_url ?>uploads/images/<?= $obra->imagen ?>" alt="" class="avatar"/></a>
                                 <?php else: ?>
 
                             <?php endif; ?>

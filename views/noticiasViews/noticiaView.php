@@ -17,7 +17,7 @@
 
                 <div class="card-body text-center">
                     <h4 class="display-4"><?= $noticia->nombre ?></h4>
-                    <p class="mt-4"> <?= $noticia->texto ?> </p>
+                    <p style="background:white;" class="mt-4"> <?= $noticia->texto ?> </p>
                 </div>
 
 

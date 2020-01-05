@@ -12,9 +12,18 @@ ob_start();
     <link rel="stylesheet" href="<?= base_url ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url ?>assets/css/style.css">
 
-    <?php require_once './views/layout/scripts.php'; 
+
+
+    <meta property="og:url"           content="http://racielarquitectos.mx/" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Raciel Arte en Madera" />
+    <meta property="og:description"   content="Escultura en finas maderas" />
+    <meta property="og:image"         content="http://racielarquitectos.mx/img/casa1.jpg" />
+
+    <?php
+    require_once './views/layout/scripts.php';
     header("HTTP/1.1 200 OK");
-?>
+    ?>
     <title>Raciel Arquitectos</title>
 </head>
 <body>
@@ -26,27 +35,29 @@ ob_start();
                     <a href="<?= base_url ?>" class=""> <img class="logo " src="<?= base_url ?>/assets/img/logoAr.png" alt=""></a>
                 </div>
 
-                <div class="col-lg-6 col-sm-12   d-flex  align-items-end flex-row-reverse">
-                    <nav class="col navbar navbar-expand-lg navbar-light mb-1  ">
+                <div id="navOpcionesQuitarPadding" class="col-lg-6 col-sm-12   d-flex  align-items-end flex-row-reverse ">
+                    <nav id="navOpcionesQuitarPadding" class="col navbar navbar-expand-lg navbar-light mb-1  ">
                         <div class="collapse navbar-collapse  d-lg-flex flex-lg-column-reverse  " id="navbarTogglerDemo01">
-                            <ul class="navbar-nav   pb-2 mt-2 mt-lg-0 text-center d">
+                            <ul id="navOpcionesQuitarPadding" class="navbar-nav   pb-2 mt-2 mt-lg-0 text-center ">
                                 <?php if (isset($_SESSION["identity"])): ?>                        
                                     <li class="nav-item dropdown    ">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle navHover" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             <?php echo $_SESSION["identity"]->nombre; ?>              <span class="caret"></span>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="<?= base_url ?>usuario/miPerfil"> 
+
+                                        <div class="dropdown-menu dropdown-menu-right quitarBorder"  aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item quitarAlineado" href="<?= base_url ?>usuario/miPerfil"> 
                                                 Mi Datos
                                             </a>
-                                           
+
                                             <!-----INICIO DE SESION ----->
                                             <?php if (isset($_SESSION["admin"])): ?>
                                                 <a  class="dropdown-item "  href="<?= base_url ?>pedidos/gestionPedidos">Gestionar pedidos</a>
                                                 <a class="dropdown-item"  href="<?= base_url ?>categorias/index">Gestionar categorias</a>
                                                 <a class="dropdown-item"  href="<?= base_url ?>producto/gestion">Gestionar productos</a>
-                                                <a class="dropdown-item"  href="<?= base_url ?>producto/gestion">Gestionar noticias</a>
-                                                <a class="dropdown-item"  href="<?= base_url ?>producto/gestion">Gestionar Obras Arquitectonicas</a>
+                                                <a class="dropdown-item"  href="<?= base_url ?>?controller=noticias&action=Gestion">Gestionar noticias</a>
+                                                <a class="dropdown-item"  href="<?= base_url ?>obrasArquitecto/gestion">Gestionar Obras </a>
+                                                <a class="dropdown-item"  href="<?= base_url ?>usuario/gestion">Gestionar Usuarios </a>
                                             <?php endif; ?>
 
                                             <?php if (isset($_SESSION["identity"])): ?>
@@ -60,7 +71,10 @@ ob_start();
                                         </div>
                                     </li>
 
+
                                 <?php else: ?> 
+
+
                                     <li class="nav-item">
                                         <a class="nav-link navLogin navHover"href="<?= base_url ?>usuario/loggearse">INICIAR SESION</a>
                                     </li>
@@ -73,7 +87,7 @@ ob_start();
                                 <!-----CARRITO DE COMPRAS ----->
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle navHover" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        <img width="35px" height="35px" src="<?= base_url; ?>/assets/img/carrito.png" alt="">            
+                                        <img class="sombra" width="35px" height="35px" src="<?= base_url; ?>/assets/img/carrito.png" alt="">            
                                     </a>
 
                                     <?php if (isset($_SESSION["carrito"])): ?>
@@ -98,6 +112,9 @@ ob_start();
                                         </div>
 
                                     <?php endif; ?>
+                                </li>
+                                <li class="nav-item dropdown  mt-2  ">
+                                    <input style="margin: -4px;"type="text" class="form-control" placeholder="Buscar">
                                 </li>
                             </ul>
                         </div>
@@ -189,4 +206,28 @@ ob_start();
             </nav>
         </div>
 
+        <div class="d-flex justify-content-center">
+
+            <div class="col-lg-1 col-xs-2 mt-4 ml-1 p-3  categoriasMenu ">
+
+                <div class=" col-12">
+
+                    <a class="dropdown-item text-center m-2 p-2 rounded principalLetrasNav " href="<?= base_url ?>carrito/index">Mi carrito</a>
+                    <?php $categorias = utilidades::showCategorias() ?>
+                    <?php while ($product = $categorias->fetch_object()): ?>
+                        <a class="dropdown-item text-center mt-2 p-2 rounded principalLetrasNav " href="<?= base_url ?>?controller=categorias&action=ver&id=<?= $product->id; ?>"><?= $product->nombre; ?></a>
+                    <?php endwhile; ?>
+
+
+
+
+
+
+
+                </div>
+
+            </div>     
+
+
+            <div class="col-11 sliderLeft">
 

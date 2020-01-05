@@ -1,5 +1,5 @@
 <?php
-
+require_once './controllers/obrasArquitectoController.php';
 require_once './controllers/direccionesUserController.php';
 require_once './controllers/comentariosNoticiasController.php';
 require_once './config/dataBase.php';
@@ -59,6 +59,15 @@ class apiController {
         }
     }
 
+    
+    /****************OBRAS**************/
+    
+    
+  
+    
+    
+    
+    
     /*     * ************************************DIRECCIONES********************************************************************** */
 
     public function guardarDireccion() {
@@ -206,6 +215,103 @@ class apiController {
     }
 
     /*     * *******************PRODUCTOS FIN**************************** */
+
+
+ /****************OBRAS**************/
+    
+    
+    public function buscarObra(){
+          if (!empty(file_get_contents("php://input"))) {
+            $datosRecibidos = file_get_contents("php://input");
+# No los hemos decodificado, así que lo hacemos de una vez:
+            $obraBuscar = json_decode($datosRecibidos);
+
+            $funcion = $obraBuscar->accion;
+            $obra = new obrasArquitectoController();
+            switch ($funcion) {
+                case "idBuscarObra";
+                    $id = $obra->getById($obraBuscar->inputObra, $obraBuscar->idUser);
+                    if (!$id) {
+                        header("http/1.1 500 error");
+                        echo json_encode('{"resultado":"No hay coincidencia"}', JSON_FORCE_OBJECT);
+                    } else if ($id) {
+                        header("http/1.1 200 ok");
+                        echo $id;
+                    }
+                    break;
+
+                case "nombreBuscarObra";
+                    $id = $obra->getByDescripcion($obraBuscar->inputObra);
+                    if (!$id) {
+                        header("http/1.1 500 error");
+                        echo json_encode('{"resultado":"No hay coincidencia"}', JSON_FORCE_OBJECT);
+                    } else if ($id) {
+                        header("http/1.1 200 ok");
+                        echo $id;
+                    }
+                    break;
+                     case "fechaBuscarObra";
+                    $id = $obra->getByDate($obraBuscar->inputObra, $obraBuscar->idUser);
+                    if (!$id) {
+                        header("http/1.1 500 error");
+                        echo json_encode('{"resultado":"No hay coincidencia"}', JSON_FORCE_OBJECT);
+                    } else if ($id) {
+                        header("http/1.1 200 ok");
+                        echo $id;
+                    }
+                    break;
+            }
+        }
+    }
+    
+
+
+    /*     * ****BUSCAR NOTICIAS** */
+
+    public function buscarNoticia() {
+        if (!empty(file_get_contents("php://input"))) {
+            $datosRecibidos = file_get_contents("php://input");
+# No los hemos decodificado, así que lo hacemos de una vez:
+            $noticiaBuscar = json_decode($datosRecibidos);
+
+            $funcion = $noticiaBuscar->accion;
+            $noticia = new noticiasController();
+            switch ($funcion) {
+                case "idBuscarNoticia";
+                    $id = $noticia->getById($noticiaBuscar->inputNoticia, $noticiaBuscar->idUser);
+                    if (!$id) {
+                        header("http/1.1 500 error");
+                        echo json_encode('{"resultado":"No hay coincidencia"}', JSON_FORCE_OBJECT);
+                    } else if ($id) {
+                        header("http/1.1 200 ok");
+                        echo $id;
+                    }
+                    break;
+
+                case "nombreBuscarNoticia";
+                    $id = $noticia->getByName($noticiaBuscar->inputNoticia, $noticiaBuscar->idUser);
+                    if (!$id) {
+                        header("http/1.1 500 error");
+                        echo json_encode('{"resultado":"No hay coincidencia"}', JSON_FORCE_OBJECT);
+                    } else if ($id) {
+                        header("http/1.1 200 ok");
+                        echo $id;
+                    }
+                    break;
+                     case "fechaBuscarProducto";
+                    $id = $noticia->getByDate($noticiaBuscar->inputNoticia, $noticiaBuscar->idUser);
+                    if (!$id) {
+                        header("http/1.1 500 error");
+                        echo json_encode('{"resultado":"No hay coincidencia"}', JSON_FORCE_OBJECT);
+                    } else if ($id) {
+                        header("http/1.1 200 ok");
+                        echo $id;
+                    }
+                    break;
+            }
+        }
+    }
+
 }
 
 //header('Content-type: application/json; charset=utf-8');

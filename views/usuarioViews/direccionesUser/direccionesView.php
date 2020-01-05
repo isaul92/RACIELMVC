@@ -5,6 +5,8 @@
 
 
         <?php while ($direccion = $misDirecciones->fetch_object()): $id = $direccion->id ?>
+         <?php if ($direccion->estadoDir=="AC"): ?>
+        
             <div class=" col-12 d-flex my-3 p-2 contenedorDirecciones divEliminarDireccion<?= $id ?>">    
 
 
@@ -46,6 +48,7 @@
                 </div>
 
             </div>
+         <?php endif; ?>
         <?php endwhile; ?>
         <div class="agregarDivsDirecciones"></div>
         <?php

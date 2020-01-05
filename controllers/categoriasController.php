@@ -9,7 +9,7 @@ class categoriasController {
         utilidades::isAdmin();
         $categoria = new categoriasModelo();
         $categorias = $categoria->getAll();
-        require_once 'views/categoriasViews/categoriavista.php';
+        require_once 'views/categoriasViews/categoriaVista.php';
     }
 
     public function crear() {
@@ -25,7 +25,7 @@ class categoriasController {
             $categoria->setNombre($_POST["nombre"]);
             $sql = $categoria->save();
         }
-        header("Location:" . base_url . "categorias/index");
+    echo"<script language='javascript'>window.location='".base_url . "categorias/index"."'</script>;";
     }
 
     public function update() {
@@ -35,11 +35,14 @@ class categoriasController {
             $categoria->setNombre($_POST["nombre"]);
             $categoria->setId($_POST["idCategoria"]);
             $sql = $categoria->update();
-            echo $sql;
+         
+           
         }else{
             echo "no llego nada";
         }
-           header("Location:" . base_url . "categorias/index");
+                  header("Status: 301 Moved Permanently");
+             header("Location:" . base_url . "categorias/index");
+               echo"<script language='javascript'>window.location='".base_url . "categorias/index"."'</script>;";
     }
 
     public function ver() {

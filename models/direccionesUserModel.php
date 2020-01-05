@@ -160,7 +160,7 @@ class direccionesUserModel {
     public function guardarDireccion() {
         $query = "INSERT INTO direccionesuser values(null," . $this->getIduser() . ",'" . $this->getCodigoPostal()
                 . "','" . $this->getEstado() . "','" . $this->getMunicipio() . "','" . $this->getColonia() . "','" . $this->getCalle() .
-                "','" . $this->getNoExterior() . "','" . $this->getNoInterior() . "','" . $this->getEntreCalles() . "','" . $this->getReferencias() . "','" . $this->getTeleContacto() . "','" . "','" . $this->getIdEstado() . "','" . $this->getIdMunicipio() . "')";
+                "','" . $this->getNoExterior() . "','" . $this->getNoInterior() . "','" . $this->getEntreCalles() . "','" . $this->getReferencias() . "','" . $this->getTeleContacto() . "','" . "','" . $this->getIdEstado() . "','" . $this->getIdMunicipio() . "','AC')";
         $direcciones = $this->db->query($query);
         $estado = $this->db->affected_rows;
         $query = " SELECT MAX(id) as 'id' from direccionesuser";
@@ -179,7 +179,7 @@ class direccionesUserModel {
     }
 
     public function eliminarDireccion() {
-        $query = "DELETE  FROM direccionesuser where id=" . $this->getId();
+        $query = "UPDATE direccionesuser SET estadoDir='DC' where id=" . $this->getId();
         $direcciones = $this->db->query($query);
         return $this->db->affected_rows;
     }

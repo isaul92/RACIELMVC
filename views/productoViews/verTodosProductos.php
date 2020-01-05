@@ -4,18 +4,18 @@
             <div class="card-columns">
            
                 <?php while ($pro = $productos->fetch_object()): ?>
-
+    <?php if ($pro->status=="AC") : ?>
 
 
                     <div class="card m-2 border-1  ">
 
                         <?php if ($pro->imagen != null): ?>
-                            <img  src="<?= base_url ?>uploads/images/<?= $pro->imagen ?>" alt="" class="card-image-top img-fluid">
+                            <img  src="<?= base_url ?>uploads/images/<?= $pro->imagen ?>" alt="" class="card-image-top sombra img-fluid">
                         <?php else: ?>
                             <img  src="<?= base_url ?>assets/img/camiseta.png">
                         <?php endif; ?>
 
-                        <div class="card-body text-center">
+                        <div class="card-body text-center pt-4">
                             <h4><a  href="<?= base_url ?>producto/ver&id=<?= $pro->id ?>" ><?= $pro->nombre ?></a></h4>
                             <h3 class="precioCard"><?= empty($pro->precionConDescuento) ? "" : "$" .$número_formato_inglés = number_format($pro->precionConDescuento) ; ?>
                             </h3>
@@ -32,6 +32,7 @@
 
 
                     </div>
+                 <?php endif; ?>
                 <?php endwhile; ?>
 
             </div>   

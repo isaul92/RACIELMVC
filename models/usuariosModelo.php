@@ -92,7 +92,7 @@ class usuarioModelo {
     }
 
     public function save() {
-        $sql = "INSERT INTO USUARIOS VALUES(null,'{$this->getNombre()}','{$this->getApellidos()}','{$this->getEmail()}','{$this->getPassword()}','user','{$this->getImage()}')";
+        $sql = "INSERT INTO usuarios VALUES(null,'{$this->getNombre()}','{$this->getApellidos()}','{$this->getEmail()}','{$this->getPassword()}','user','{$this->getImage()}','AC')";
         $save = false;
         $save = $this->db->query($sql);
 
@@ -106,14 +106,20 @@ class usuarioModelo {
 
 
 
-        $sql = "UPDATE  USUARIOS SET apellidos='{$this->getApellidos()}',nombre='{$this->getNombre()}',password='$password' ,telefono='" . $this->getTelefono() . "', telefonoAlter='" . $this->getTelefonoAlternativo() . "' where id='".$this->getId()."'";               
+        $sql = "UPDATE  usuarios SET apellidos='{$this->getApellidos()}',nombre='{$this->getNombre()}',password='$password' ,telefono='" . $this->getTelefono() . "', telefonoAlter='" . $this->getTelefonoAlternativo() . "' where id='".$this->getId()."'";               
 
         $save = false;
         $save = $this->db->query($sql);
         if ($save) {
             $save = true;
         }
-        return $save;
+        return $sql;
+    }
+    
+    public function getAll(){
+        $sql="SELECT * FROM usuarios ";
+        $result= $this->db->query($sql);
+        return $result;
     }
 
     public function login() {

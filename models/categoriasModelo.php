@@ -36,13 +36,13 @@ class categoriasModelo {
     }
 
     public function getOne($id) {
-        $sql = "select * from categorias where id=$id";
+        $sql = "select * from categorias where id=$id ";
         $categoria = $this->db->query($sql);
         return $categoria->fetch_object();
     }
 
     public function getAll() {
-        $sql = "select p.*,c.*, count(p.categoria_id) AS 'numeroP' from  categorias c left join  productos p  on p.categoria_id=c.id group by c.id;";
+        $sql = "select p.*,c.*, count(p.categoria_id) AS 'numeroP' from  categorias c left join  productos p  on p.categoria_id=c.id and p.status='AC'  group by c.id";
         $categorias = $this->db->query($sql);
         return $categorias;
     }
@@ -52,7 +52,7 @@ class categoriasModelo {
         $categorias = $this->db->query($sql);
         return $categorias;
     }
-
+//select p.*,c.*, count(p.categoria_id) AS 'numeroP' from  categorias c left join  productos p  on p.categoria_id=c.id and p.status='AC'  group by c.id
     public function save() {
         $sql = "insert into categorias values(null,'" . $this->getNombre() . "')";
         $categorias = $this->db->query($sql);

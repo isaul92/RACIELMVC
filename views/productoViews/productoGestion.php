@@ -17,72 +17,90 @@
             </label>
         </div>
         <input class="form-control mb-4" required onchange="validar(event)"  type="text" name="buscadorProductosInput" id="inputBuscarProductoId" placeholder="Buscar un producto">
-        
+
     </form>
 
     <div class="buscadorProductos">
 
-  
-                        <a href="<?= base_url ?>producto/crear" class="btn btn-outline-success"> Crear producto</a>
-                        </nav>
-                        </div>
+  <a href="<?= base_url ?>producto/gestion"  class="mb-4 btn btn-outline-success"> Mostrar todos producto</a>
+        <a href="<?= base_url ?>producto/crear" class="mb-4 btn btn-outline-success"> Crear producto</a>
+        </nav>
+    </div>
 
 
-                        <?php if (isset($_SESSION["delete"]) && $_SESSION["delete"] == "complete"): ?>
-                            <strong class="alerta">Producto eliminado con exito</strong>
+    <?php if (isset($_SESSION["delete"]) && $_SESSION["delete"] == "complete"): ?>
+        <strong class="alerta">Producto eliminado con exito</strong>
 
-                        <?php elseif (isset($_SESSION["delete"]) && $_SESSION["delete"] == "failed"): ?>
-                            <strong class="alerta alerta-error">Producto no eliminado con exito</strong>
-                            <?php
-                        endif;
-                        utilidades::eliminarSession("delete");
-                        ?>
-
-
-
-                        <?php if (isset($_SESSION["producto"]) && $_SESSION["producto"] == "complete"): ?>
-                            <strong class="alerta">Producto creado con exito</strong>
-
-                        <?php elseif (isset($_SESSION["producto"]) && $_SESSION["producto"] == "failed"): ?>
-                            <strong class="alerta alerta-error">Producto no creado con exito</strong>
-                            <?php
-                        endif;
-                        utilidades::eliminarSession("producto");
-                        ?>
-                            <div id="tablaBuscarProd">
-                                <table id="allProducts" class="table  table-striped table-responsive table-hover d-flex justify-content-center">
-
-                            <tr>
-                                <th>Categoria ID</th>
-                                <th>Producto ID</th>
-                                <th>Nombre</th>
-                                <th>Descripcion</th>
-                                <th>Precio</th>
-                                <th>Stock</th>
-                                <th>Acciones</th>
-                            </tr>
-                            <?php while ($product = $productos->fetch_object()): ?>
-                                <tr>
-                                    <td><?= $product->categoria_id; ?></td>
-                                    <td><?= $product->id; ?></td>
-                                    <td><?= $product->nombre; ?></td>
-                                    <td><?= $product->descripcion; ?></td>
-                                    <td><?= $product->precio; ?></td>
-                                    <td><?= $product->stock; ?></td>
-                                    <td>   <a href="<?= base_url ?>producto/eliminar&id=<?= $product->id; ?>" style="color:black;" class="btn m-1 btn-outline-light">Eliminar </a>
-                                        <a href="<?= base_url ?>producto/editar&id=<?= $product->id; ?>" style="color:black;" class="btn btn-outline-light m-1" >Editar</a></td>
+    <?php elseif (isset($_SESSION["delete"]) && $_SESSION["delete"] == "failed"): ?>
+        <strong class="alerta alerta-error">Producto no eliminado con exito</strong>
+        <?php
+    endif;
+    utilidades::eliminarSession("delete");
+    ?>
 
 
-                                </tr>
 
-                            <?php endwhile; ?>
-                        </table>
-                                </div>
-                            <div id="buscadorProductos">
-                                
+    <?php if (isset($_SESSION["producto"]) && $_SESSION["producto"] == "complete"): ?>
+        <strong class="alerta badge badge-success">Producto creado con exito</strong>
+
+    <?php elseif (isset($_SESSION["producto"]) && $_SESSION["producto"] == "failed"): ?>
+        <strong class="alerta alerta-error  badge badge-danger">Producto no creado con exito</strong>
+        <?php
+    endif;
+    utilidades::eliminarSession("producto");
+    ?>
+    <div class="" id="buscadorProductos">
+
+    </div>
+    <div id="tablaBuscarProd">
+        <div class="row ">
+
+            <div class='col-12 d-flex justify-content-center flex-wrap sombra' id='grupoDeCards'>  
+                <?php while ($product = $productos->fetch_object()): ?>
+
+                  <?php if ($product->status=="AC") : ?>
+
+                    <div class='card col-lg-3 col-sm-6 m-1'>
+                        <div class='card-header fondoBlanco d-flex'>
+                            <div class="container-avatar ">
+                                <img class="img-fluid " style="width: 80px;height: 80px;" src="<?= base_url ?>uploads/images/<?= $product->imagen ?>">
                             </div>
-
+                            <a href='<?= base_url ?>producto/ver&id=<?= $product->id; ?>' > <label><?= $product->nombre; ?> </label> </a>
                         </div>
+
+
+                        <div class='card-body fondoBlanco'>
+                            <div class=' row d-flex  flex-wrap '>
+                                <div class='col-12 fondoBlanco'>
+                                    <label>   Producto ID: <?= $product->id; ?> </label>
+                                    <p>  Categoria: <?= $product->nombreCategoria; ?> </p>
+                                    <p>Descripcion :</p>
+                                    <p><?= $product->descripcion; ?>'</p>
+                                </div>
+                                <div class='col-6  fondoBlanco'>Precio: $<?= $product->precio; ?></div>
+                              
+                            </div>
+                        </div>
+                        <div class='card-footer fondoBlanco'>
+                            <td>   <a href='<?= base_url ?>producto/eliminar&id=<?= $product->id; ?>' style='color:black;' class='btn m-1 btn-outline-danger'>Eliminar </a>
+                                <a href='<?= base_url ?>producto/editar&id=<?= $product->id; ?>' style='color:black;' class='btn btn-outline-warning m-1' >Editar</a>
+                            </td>
+                        </div>
+
+
+                    </div>
+                 <?php endif; ?>
+
+                <?php endwhile; ?>
+            </div>
+            </table>
+
+            <div id="buscadorProductos">
+
+            </div>
+
+
+        </div>
     <?php
 
 /* <>   <>  <>  <>  <>  <>  <>  <>  <>  <>  <>  <>  <>  <>  <> <> <> <>

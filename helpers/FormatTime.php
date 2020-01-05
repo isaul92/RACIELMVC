@@ -58,7 +58,7 @@ class FormatTime {
             }
         }
         
-       echo  "Hace  " . $result;
+       return  "Hace  " . $result;
     }
 }
 ?>
